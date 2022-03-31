@@ -1,5 +1,5 @@
 import { Router } from "express";
-import deomRouter from "./demo";
+import deomRouter from "api/demo";
 
 const router = Router();
 
