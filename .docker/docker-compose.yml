@@ -1,0 +1,25 @@
+version: '3.7'
+
+networks:
+  staff_crud_demo:
+    driver: ${NETWORKS_DRIVER}
+
+services:
+  mysql:
+    image: staff_crud_demo/mysql
+    container_name: staff_crud_demo_mysql
+    build:
+      context: .
+      dockerfile: mysql/Dockerfile
+      args:
+        MYSQL_VERSION: ${MYSQL_VERSION}
+    environment:
+      - MYSQL_DATABASE=${MYSQL_DATABASE} 
+      - MYSQL_USER=${MYSQL_USER} 
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD} 
+    volumes:
+      - './mysql/db:/var/lib/mysql'
+    ports:
+      - '${MYSQL_EXPOSE_PORT}:${MYSQL_INTERNAL_PORT}'
+    networks:
+      - staff_crud_demo
