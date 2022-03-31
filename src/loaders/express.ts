@@ -9,7 +9,7 @@ import * as bodyparser from "body-parser";
 
 const onListening = () => {
   // eslint-disable-next-line no-template-curly-in-string
-  const bind = process.env.PORT || "4000";
+  const bind = process.env.API_PORT || "4000";
   console.log("Listening on " + bind);
 };
 
