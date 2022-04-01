@@ -9,7 +9,7 @@ import * as bodyparser from "body-parser";
 
 const onListening = () => {
   // eslint-disable-next-line no-template-curly-in-string
-  const bind = process.env.API_PORT || "4000";
+  const bind = process.env.API_PORT || "5000";
   console.log("Listening on " + bind);
 };
 
@@ -19,9 +19,9 @@ function onError(error: any) {
   }
 
   var bind =
-    typeof process.env.PORT === "string"
-      ? "Pipe " + process.env.PORT
-      : "Port " + process.env.PORT;
+    typeof process.env.API_PORT === "string"
+      ? "Pipe " + process.env.API_PORT
+      : "Port " + process.env.API_PORT;
 
   // handle specific listen errors with friendly messages
   switch (error.code) {
@@ -44,7 +44,7 @@ const expressLoader = (app: Application): void => {
   const server: http.Server = http.createServer(app);
 
   // ENV
-  const port = process.env.PORT || "5000";
+  const port = process.env.API_PORT || "5000";
 
   // Express uses
   app.use(compression());
