@@ -1,8 +1,8 @@
 import { Staff } from "models";
 
-const initdb = () => {
+const initdb = async () => {
   // TODO: Sync only on dev environment
-  Staff.sync();
+  await Staff.sync();
 };
 
 export default initdb;
