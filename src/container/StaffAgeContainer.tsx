@@ -5,7 +5,7 @@ import { useAppDispatch, useAppSelector } from "hooks/app";
 
 const StaffAgeContaier: React.FC = (): ReactElement => {
   const dispatch = useAppDispatch();
-  const value = useAppSelector((state) => state.RootReducer.name);
+  const value = useAppSelector((state) => state.RootReducer.age);
   const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     dispatch(setAge(e.target.value));
   };
@@ -14,7 +14,7 @@ const StaffAgeContaier: React.FC = (): ReactElement => {
     <Input
       placeholder="Staff age"
       label="Age:"
-      value={value}
+      value={String(value)}
       onChange={handleOnChange}
     />
   );

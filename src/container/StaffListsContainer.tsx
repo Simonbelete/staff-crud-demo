@@ -15,10 +15,6 @@ const StaffListsContainer: React.FC = (): ReactElement => {
     );
   };
 
-  useEffect(() => {
-    console.log(staffs);
-  }, []);
-
   return (
     <StaffsList>
       <>
@@ -26,6 +22,9 @@ const StaffListsContainer: React.FC = (): ReactElement => {
           <div className="flex w-full h-full items-center justify-center">
             Loading...
           </div>
+        )}
+        {staffs && !loading && staffs.length === 0 && (
+          <div>No Staffs found</div>
         )}
         {staffs &&
           staffs.map((_, i) => (

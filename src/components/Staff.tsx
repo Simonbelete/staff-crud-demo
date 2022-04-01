@@ -14,25 +14,26 @@ const Staff: React.FC<{
   }, [id, onDelete]);
 
   return (
-    <div className="flex flex-row gap-3">
+    <div className="grid grid-cols-12 gap-4">
       {edit === true ? (
         <>
-          <Input value={name} />
-          <Input value={age} />
-          <Input value={email} />
+          <p className="col-span-2">{id}</p>
+          <Input value={name} className="col-span-2" />
+          <Input value={age} className="col-span-2" />
+          <Input value={email} className="col-span-2" />
         </>
       ) : (
         <>
-          <p>{id}</p>
-          <p>{name}</p>
-          <p>{age}</p>
-          <p>{email}</p>
+          <p className="col-span-2">{id}</p>
+          <p className="col-span-2">{name}</p>
+          <p className="col-span-2">{age}</p>
+          <p className="col-span-2">{email}</p>
         </>
       )}
-      <Button onClick={() => setEdit(!edit)}>
+      <Button onClick={() => setEdit(!edit)} className="col-span-1">
         <Icon.Edit />
       </Button>
-      <Button onClick={handleOnDelete}>
+      <Button onClick={handleOnDelete} className="col-span-1">
         <Icon.Delete />
       </Button>
     </div>

@@ -5,7 +5,7 @@ import { useAppDispatch, useAppSelector } from "hooks/app";
 
 const StaffEmailContaier: React.FC = (): ReactElement => {
   const dispatch = useAppDispatch();
-  const value = useAppSelector((state) => state.RootReducer.name);
+  const value = useAppSelector((state) => state.RootReducer.email);
   const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     dispatch(setEmail(e.target.value));
   };

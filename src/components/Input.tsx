@@ -4,10 +4,11 @@ const Input: React.FC<{
   placeholder?: string;
   value: string;
   label?: string;
+  className?: string;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
-}> = ({ placeholder, value, onChange, label }) => {
+}> = ({ placeholder, value, onChange, label, className }) => {
   return (
-    <div className="flex flex-col gap-2">
+    <div className={`${className} flex flex-col gap-2`}>
       {label && <label className="text-gray-600 font-bold">{label}</label>}
       <input
         type="text"
