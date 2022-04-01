@@ -5,12 +5,16 @@ import {
   StaffAgeContainer,
   StaffEmailContaier,
 } from "container";
-import { useAppDispatch, useAppSelector } from "hooks/app";
+import { useAppSelector } from "hooks/app";
 import axios from "config/axiosConfig";
 import { AxiosResponse, AxiosError } from "axios";
 import { ToastContainer, toast } from "react-toastify";
+import { getStaffsAndUpdate } from "operations/get-saffs";
+import { useAppDispatch } from "hooks/app";
+import { setAge, setEmail, setName } from "rootSlice";
 
 const StaffFormContainer: React.FC = (): ReactElement => {
+  const dispatch = useAppDispatch();
   const { age, email, name } = useAppSelector((state) => state.RootReducer);
   const hanldeOnClick = () => {
     // Check the datas
@@ -24,6 +28,10 @@ const StaffFormContainer: React.FC = (): ReactElement => {
       .then((response: AxiosResponse) => {
         console.log(response);
         toast.success("Sucessfully created staffs");
+        getStaffsAndUpdate(dispatch);
+        dispatch(setName(""));
+        dispatch(setAge("0"));
+        dispatch(setEmail(""));
       })
       .catch((error: AxiosError) => {
         console.log(error);

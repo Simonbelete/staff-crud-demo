@@ -3,8 +3,10 @@ import useSWR, { SWRResponse } from "swr";
 import { Staff, Response } from "types.d";
 import axios from "config/axiosConfig";
 import { AxiosResponse } from "axios";
+import { useAppDispatch } from "hooks/app";
+import { setLoading, setStaffs } from "rootSlice";
 
-const ENDPOINT = "/staffs";
+export const ENDPOINT = "/staffs";
 
 const fetcher = (url: string): Promise<Staff[]> =>
   axios.get(url).then((response: AxiosResponse<Response<Staff[]>>) => {
@@ -21,4 +23,13 @@ const getStaffs = () => {
   };
 };
 
+const getStaffsAndUpdate = (dispatch: any) => {
+  fetcher(ENDPOINT).then((data) => {
+    console.log(data);
+    dispatch(setStaffs(data));
+    dispatch(setLoading(false));
+  });
+};
+
+export { getStaffsAndUpdate, getStaffs };
 export default getStaffs;

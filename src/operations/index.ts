@@ -1,1 +1,1 @@
-export { default as getStaffs } from "operations/get-saffs";
+export * from "operations/get-saffs";
