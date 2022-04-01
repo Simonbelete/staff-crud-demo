@@ -1,9 +1,10 @@
 import React, { ReactElement, useEffect, useState } from "react";
-import { StaffsList, Staff } from "components";
+import { StaffsList, Staff as StaffComponent } from "components";
 import { getStaffs } from "operations";
 import axios from "config/axiosConfig";
 import { ToastContainer, toast } from "react-toastify";
 import { AxiosResponse, AxiosError } from "axios";
+import { Staff } from "types.d";
 
 const StaffListsContainer: React.FC = (): ReactElement => {
   const { staffs, loading, error } = getStaffs();
@@ -18,6 +19,20 @@ const StaffListsContainer: React.FC = (): ReactElement => {
       .catch((error: AxiosError) => {
         console.log(error);
         toast.error("Failed to Delete new staff");
+      });
+  };
+
+  const handleOnUpdate = (staff: Staff) => {
+    console.log(staff);
+    axios
+      .put(`/staffs/${staff.id}`, staff)
+      .then((response: AxiosResponse) => {
+        console.log(response);
+        toast.success("Sucessfully Updated staffs");
+      })
+      .catch((error: AxiosError) => {
+        console.log(error);
+        toast.error("Failed to Updated staff");
       });
   };
 
@@ -43,12 +58,13 @@ const StaffListsContainer: React.FC = (): ReactElement => {
         )}
         {staffs &&
           staffs.map((_, i) => (
-            <Staff
+            <StaffComponent
               id={_.id}
               name={_.name}
               age={String(_.age)}
               email={_.email}
               onDelete={handleOnDelete}
+              onUpdate={handleOnUpdate}
             />
           ))}
       </>
