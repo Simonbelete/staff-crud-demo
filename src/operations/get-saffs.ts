@@ -3,7 +3,6 @@ import useSWR, { SWRResponse } from "swr";
 import { Staff, Response } from "types.d";
 import axios from "config/axiosConfig";
 import { AxiosResponse } from "axios";
-import { useAppDispatch } from "hooks/app";
 import { setLoading, setStaffs } from "rootSlice";
 
 export const ENDPOINT = "/staffs";

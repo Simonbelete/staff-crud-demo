@@ -33,7 +33,7 @@
     "web": "react-scripts start",
     "api": "nodemon -r tsconfig-paths/register src/server.ts",
     "dev": "concurrently \"npm run api\" \"npm run web\"",
-    "build": "react-scripts build && tsc app.ts",
+    "build": "react-scripts build && tsc src/server.ts",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

@@ -11,7 +11,8 @@ import { Sequelize } from "sequelize";
 // });
 
 const sequelize = new Sequelize(
-  "mysql://root:123456789@127.0.0.1:3306/staff_crud_demo_db"
+  process.env.MYSQL_URL ||
+    "mysql://root:123456789@127.0.0.1:3306/staff_crud_demo_db"
 );
 
 export default sequelize;
