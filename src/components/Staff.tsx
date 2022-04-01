@@ -2,7 +2,7 @@ import React, { ReactElement, useCallback, useState } from "react";
 import { Button, Icon, Input } from "components";
 
 const Staff: React.FC<{
-  id?: number;
+  id?: number | string;
   name: string;
   age: string;
   email: string;
@@ -10,7 +10,7 @@ const Staff: React.FC<{
 }> = ({ id, name, age, email, onDelete }): ReactElement => {
   const [edit, setEdit] = useState<boolean>(false);
   const handleOnDelete = useCallback(() => {
-    onDelete(id || 0);
+    onDelete(Number(id) || 0);
   }, [id, onDelete]);
 
   return (
@@ -20,14 +20,14 @@ const Staff: React.FC<{
           <p className="col-span-2">{id}</p>
           <Input value={name} className="col-span-2" />
           <Input value={age} className="col-span-2" />
-          <Input value={email} className="col-span-2" />
+          <Input value={email} className="col-span-3" />
         </>
       ) : (
         <>
           <p className="col-span-2">{id}</p>
           <p className="col-span-2">{name}</p>
           <p className="col-span-2">{age}</p>
-          <p className="col-span-2">{email}</p>
+          <p className="col-span-3">{email}</p>
         </>
       )}
       <Button onClick={() => setEdit(!edit)} className="col-span-1">
