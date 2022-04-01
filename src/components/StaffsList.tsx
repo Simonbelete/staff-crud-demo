@@ -1,6 +1,6 @@
 import React, { ReactElement } from "react";
 
-const StaffsList: React.FC<{ children: ReactElement[] }> = ({
+const StaffsList: React.FC<{ children: ReactElement[] | ReactElement }> = ({
   children,
 }): ReactElement => {
   return (
