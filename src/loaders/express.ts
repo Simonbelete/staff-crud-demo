@@ -2,6 +2,7 @@ import dotenv from "dotenv";
 import morgan from "morgan";
 import express, { Application, Request, Response, NextFunction } from "express";
 import compression from "compression";
+import cors from "cors";
 
 import * as http from "http";
 // eslint-disable-next-line import/no-extraneous-dependencies
@@ -52,7 +53,7 @@ const expressLoader = (app: Application): void => {
   app.use(express.json());
   app.use(express.urlencoded({ extended: false }));
   app.use(morgan("dev"));
-  // app.use(cors());
+  app.use(cors());
 
   // Middleware Error Handler
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
