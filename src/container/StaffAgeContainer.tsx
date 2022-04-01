@@ -11,7 +11,12 @@ const StaffAgeContaier: React.FC = (): ReactElement => {
   };
 
   return (
-    <Input placeholder="Staff age" value={value} onChange={handleOnChange} />
+    <Input
+      placeholder="Staff age"
+      label="Age:"
+      value={value}
+      onChange={handleOnChange}
+    />
   );
 };
 

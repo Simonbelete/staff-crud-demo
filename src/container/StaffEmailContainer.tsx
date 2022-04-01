@@ -11,7 +11,12 @@ const StaffEmailContaier: React.FC = (): ReactElement => {
   };
 
   return (
-    <Input placeholder="Staff email" value={value} onChange={handleOnChange} />
+    <Input
+      placeholder="Staff email"
+      label="Email Address:"
+      value={value}
+      onChange={handleOnChange}
+    />
   );
 };
 

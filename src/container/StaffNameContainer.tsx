@@ -11,7 +11,12 @@ const StaffNameContaier: React.FC = (): ReactElement => {
   };
 
   return (
-    <Input placeholder="Staff name" value={value} onChange={handleOnChange} />
+    <Input
+      placeholder="Staff name"
+      label="Full Name:"
+      value={value}
+      onChange={handleOnChange}
+    />
   );
 };
 
